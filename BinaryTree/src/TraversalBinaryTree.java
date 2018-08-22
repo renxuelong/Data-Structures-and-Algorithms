@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -27,29 +26,24 @@ public class TraversalBinaryTree {
 	}
 
 	public List<List<Integer>> traversalBinaryTree(TreeNode root) {
-		List<List<Integer>> list = new ArrayList<>();
+		List<List<Integer>> list = new LinkedList<>();
 		if(root == null) return list;
 		
 		LinkedList<TreeNode> queue = new LinkedList<>();
-		queue.add(root);
-		LinkedList<TreeNode> queueChild = new LinkedList<>();
+		queue.add(root); 
 		TreeNode node;
 
 		while (!queue.isEmpty()) {
-			List<Integer> listChild = new ArrayList<>();
+			List<Integer> listChild = new LinkedList<>();
 			int len = queue.size();
 			for(int i = 0;i < len;i++) {
 				node = queue.poll();
-				if(node == null) continue;
 				listChild.add(node.val);
 				if (node.left != null)
-					queueChild.add(node.left);
+					queue.add(node.left);
 				if (node.right != null)
-					queueChild.add(node.right);
+					queue.add(node.right);
 			}
-			queue.addAll(queueChild);
-			queueChild.clear();
-			
 			list.add(0,listChild);
 		}
 		return list;
