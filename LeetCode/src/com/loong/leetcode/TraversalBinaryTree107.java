@@ -1,9 +1,15 @@
+package com.loong.leetcode;
 import java.util.LinkedList;
 import java.util.List;
 
-public class TraversalBinaryTree {
+/**
+ * 给定一个二叉树，返回其节点值自底向上的层次遍历。 （即按从叶子节点所在层到根节点所在的层，逐层从左向右遍历）
+ * @author loong
+ *
+ */
+public class TraversalBinaryTree107 {
 	public static void main(String[] args) {
-		TraversalBinaryTree tree = new TraversalBinaryTree();
+		TraversalBinaryTree107 tree = new TraversalBinaryTree107();
 		List<List<Integer>> list = tree.traversalBinaryTree(tree.buildTree());
 		for (int i = 0; i < list.size(); i++) {
 			List<Integer> l = list.get(i);
