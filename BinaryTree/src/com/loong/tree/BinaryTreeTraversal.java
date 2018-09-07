@@ -1,12 +1,13 @@
 package com.loong.tree;
 
 import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class BinaryTreeTraversal {
 	public static void main(String[] args) {
 		BinaryTreeTraversal tool = new BinaryTreeTraversal();
-		TreeNode root = tool.buildBinaryTree();
+		TreeNode root = tool.buildBinaryTreePre("ABD##E##C#F##");
 		System.out.println("二叉树高度为：" + tool.getBinaryTreeHeight(root));
 		System.out.println("二叉树节点数：" + tool.getBinaryTreeCount(root));
 		tool.nonRecOrder(root);
@@ -33,9 +34,9 @@ public class BinaryTreeTraversal {
 	private void midTraversal(TreeNode root) {
 		if (root == null)
 			return;
-		preTraversal(root.left);
+		midTraversal(root.left);
 		System.out.println(root.value);
-		preTraversal(root.right);
+		midTraversal(root.right);
 	}
 
 	/**
@@ -43,11 +44,11 @@ public class BinaryTreeTraversal {
 	 * 
 	 * @param root
 	 */
-	private void PostOrderTraversal(TreeNode root) {
+	private void postOrderTraversal(TreeNode root) {
 		if (root == null)
 			return;
-		preTraversal(root.left);
-		preTraversal(root.right);
+		midTraversal(root.left);
+		midTraversal(root.right);
 		System.out.println(root.value);
 	}
 
@@ -118,22 +119,50 @@ public class BinaryTreeTraversal {
 	 * 构建二叉树 1 2 3 4 5 6 7
 	 */
 	private TreeNode buildBinaryTree() {
-		TreeNode node7 = new TreeNode(7, null, null);
-		TreeNode node6 = new TreeNode(6, null, null);
-		TreeNode node5 = new TreeNode(5, null, null);
-		TreeNode node4 = new TreeNode(4, null, null);
-		TreeNode node3 = new TreeNode(3, node6, node7);
-		TreeNode node2 = new TreeNode(2, node4, node5);
-		TreeNode node1 = new TreeNode(1, node2, node3);
+		TreeNode node7 = new TreeNode("G", null, null);
+		TreeNode node6 = new TreeNode("F", null, null);
+		TreeNode node5 = new TreeNode("E", null, null);
+		TreeNode node4 = new TreeNode("D", null, null);
+		TreeNode node3 = new TreeNode("C", node6, node7);
+		TreeNode node2 = new TreeNode("B", node4, node5);
+		TreeNode node1 = new TreeNode("A", node2, node3);
 		return node1;
 	}
 
+	/**
+	 * 前序序列反向构建前序二叉树
+	 * 
+	 * @author loong
+	 *
+	 */
+	private TreeNode buildBinaryTreePre(String data) {
+		if (data == null || "".equals(data))
+			return null;
+
+		Queue<String> queue = new LinkedList<>();
+		for (int i = 0; i < data.length(); i++) {
+			queue.offer(((Character)data.charAt(i)).toString());
+		}
+		return buildBinaryTreePre(queue);
+	}
+
+	private TreeNode buildBinaryTreePre(Queue<String> queue) {
+		String val = queue.poll();
+		if ("#".equals(val)) {
+			return null;
+		} else {
+			TreeNode node = new TreeNode(val, queue.isEmpty() ? null : buildBinaryTreePre(queue),
+					queue.isEmpty() ? null : buildBinaryTreePre(queue));
+			return node;
+		}
+	}
+
 	class TreeNode {
-		int value;
+		String value;
 		TreeNode left;
 		TreeNode right;
-
-		public TreeNode(int value, TreeNode left, TreeNode right) {
+		
+		public TreeNode(String value, TreeNode left, TreeNode right) {
 			this.value = value;
 			this.left = left;
 			this.right = right;
