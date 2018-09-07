@@ -16,11 +16,11 @@ public class Solution91 {
 		int[] result = new int[s.length()];
 		result[0] = 1;
 		if (s.charAt(1) == '0') {
-			if (Integer.parseInt(s.substring(0, 2)) > 26)
+			if (Integer.parseInt(s.substring(0, 2)) > 26) // 判断大于 2 的情况
 				return 0;
 			result[1] = 1;
 		} else {
-			if (Integer.parseInt(s.substring(0, 2)) > 26)
+			if (Integer.parseInt(s.substring(0, 2)) > 26) 
 				result[1] = 1;
 			else
 				result[1] = 2;
