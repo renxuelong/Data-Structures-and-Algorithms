@@ -1,7 +1,10 @@
 package com.loong.tree;
 
-import com.loong.tree.BinaryTreeTraversal.TreeNode;
-
+/**
+ * 查找二叉树
+ * @author loong
+ * 插入、查找、删除
+ */
 public class SearchBinaryTree {
 
 	private TreeNode root;

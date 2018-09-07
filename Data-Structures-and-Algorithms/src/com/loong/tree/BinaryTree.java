@@ -4,9 +4,15 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-public class BinaryTreeTraversal {
+/**
+ * 二叉树
+ * @author loong
+ *
+ * 构建、前序、中序、后序、层次遍历、高度、节点数
+ */
+public class BinaryTree {
 	public static void main(String[] args) {
-		BinaryTreeTraversal tool = new BinaryTreeTraversal();
+		BinaryTree tool = new BinaryTree();
 		TreeNode root = tool.buildBinaryTreePre("ABD##E##C#F##");
 		System.out.println("二叉树高度为：" + tool.getBinaryTreeHeight(root));
 		System.out.println("二叉树节点数：" + tool.getBinaryTreeCount(root));
