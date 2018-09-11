@@ -144,31 +144,6 @@ public class SearchBinaryTree {
 		if (root == null) {
 			root = new TreeNode(data, null, null);
 		} else {
-			// TreeNode parent = root;
-			// while(parent != null) {
-			// if(parent.value > data) {
-			// if(parent.left == null) {
-			// parent.left = node;
-			// node.parent = parent;
-			// break;
-			// } else {
-			// parent = parent.left;
-			// continue;
-			// }
-			// } else if(parent.value < data){
-			// if(parent.right == null) {
-			// parent.right = node;
-			// node.parent = parent;
-			// break;
-			// } else {
-			// parent = parent.right;
-			// continue;
-			// }
-			// } else {
-			// return root;
-			// }
-			// }
-
 			TreeNode parent = root;
 			TreeNode node = parent;
 			while (node != null) {

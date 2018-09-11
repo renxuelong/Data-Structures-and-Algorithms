@@ -5,6 +5,8 @@ import java.util.Stack;
 /**
  * 图的拓扑排序 - 使用邻接表的数据结构
  * 
+ * 使用场景：流程执行顺序的规划
+ * 
  * @author loong
  *
  */
