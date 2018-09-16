@@ -1,4 +1,4 @@
-package com.loong.divide;
+package com.loong.algorithms.divide;
 
 /**
  * 棋盘覆盖问题 - 分治法

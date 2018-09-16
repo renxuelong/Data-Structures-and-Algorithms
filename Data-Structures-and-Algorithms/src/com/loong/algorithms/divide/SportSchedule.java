@@ -1,4 +1,4 @@
-package com.loong.divide;
+package com.loong.algorithms.divide;
 
 /**
  * 分治法 - 求解球队比赛安排
