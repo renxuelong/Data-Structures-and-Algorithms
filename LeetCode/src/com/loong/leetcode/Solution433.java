@@ -9,7 +9,8 @@ public class Solution433 {
 
 	public static void main(String[] args) {
 		Solution433 solution433 = new Solution433();
-		System.out.println(solution433.minMutation1("AACCGGTT", "AAACGGTA", new String[] { "AACCGGTA", "AACCGCTA", "AAACGGTA" }));
+		System.out.println(solution433.minMutation("AACCGGTT", "AAACGGTA",
+				new String[] { "AACCGGTA", "AACCGGTT", "AAACGGTA", "AACCGCTA" }));
 	}
 
 	/**
@@ -85,6 +86,13 @@ public class Solution433 {
 		ArrayList<String> list = new ArrayList<>(Arrays.asList(bank));
 		if (!list.contains(start))
 			list.add(0, start);
+		else {
+			// 其实基因在基因库中需要先放到第一位
+			int i = list.indexOf(start);
+			String s = list.get(0);
+			list.set(0, start);
+			list.set(i, s);
+		}
 		int endIndex = list.indexOf(end);
 		if (endIndex == -1)
 			return -1;
