@@ -26,8 +26,6 @@ public class Solution433 {
 	 * 
 	 * 2. 如果找到则返回距离，如果未找到返回 -1
 	 * 
-	 * 3.
-	 * 
 	 * @param start
 	 * @param end
 	 * @param bank
@@ -87,7 +85,7 @@ public class Solution433 {
 		if (!list.contains(start))
 			list.add(0, start);
 		else {
-			// 其实基因在基因库中需要先放到第一位
+			// 起始基因在基因库中需要先放到第一位
 			int i = list.indexOf(start);
 			String s = list.get(0);
 			list.set(0, start);
