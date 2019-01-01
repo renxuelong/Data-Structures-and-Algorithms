@@ -13,7 +13,7 @@ package com.loong.algorithms.divide;
 public class SportSchedule {
 	public static void main(String[] args) {
 		SportSchedule schedule = new SportSchedule();
-		int num = 18;
+		int num = 8;
 		int[][] table = new int[num][num];
 		schedule.sportSchedule(num, table);
 		for (int i = 0; i < num; i++) {
