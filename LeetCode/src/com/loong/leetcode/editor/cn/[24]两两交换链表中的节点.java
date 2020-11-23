@@ -56,30 +56,40 @@ class Solution24 {
             return head;
         }
 
-        ListNode result = head.next;
-
-        ListNode pre = null;
-        ListNode cur1 = head;
-        ListNode cur2 = head.next;
-        ListNode next = cur2.next;
-
-        while (cur1 != null && cur2 != null) {
-            if (pre != null) {
-                pre.next = cur2;
-            }
-            cur2.next = cur1;
-            cur1.next = next;
-
-            pre = cur1;
-            cur1 = next;
-            if (cur1 != null) {
-                cur2 = cur1.next;
-            }
-            if (cur2 != null) {
-                next = cur2.next;
-            }
+        // 1. 迭代
+//        {
+//            ListNode result = head.next;
+//
+//            ListNode pre = null;
+//            ListNode cur1 = head;
+//            ListNode cur2 = head.next;
+//            ListNode next = cur2.next;
+//
+//            while (cur1 != null && cur2 != null) {
+//                if (pre != null) {
+//                    pre.next = cur2;
+//                }
+//                cur2.next = cur1;
+//                cur1.next = next;
+//
+//                pre = cur1;
+//                cur1 = next;
+//                if (cur1 != null) {
+//                    cur2 = cur1.next;
+//                }
+//                if (cur2 != null) {
+//                    next = cur2.next;
+//                }
+//            }
+//            return result;
+//        }
+        // 递归
+        {
+            ListNode next = head.next;
+            head.next = swapPairs(next.next);
+            next.next = head;
+            return next;
         }
-        return result;
     }
 
     public class ListNode {
