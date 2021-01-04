@@ -21,7 +21,7 @@ package com.loong.leetcode.editor.cn;
 class Solution283 {
     public void moveZeroes(int[] nums) {
         // N^2 解法：遍历数组，遇到 0 则将该位置之后的所有元素向前移动一位，将最后一位设置为 0
-        // O(n) 解法：快慢指针，遇到 0 时慢指针停止移动，快指针往前移动，快指针遇到非 0 时与慢指针处元素交换，直到快指针到达数组末尾
+        // O(n) 解法：快慢指针，遇到 0 时慢指针停止移动，快指针往后移动，快指针遇到非 0 时与慢指针处元素交换，直到快指针到达数组末尾
         if (nums == null || nums.length < 2) {
             return;
         }
