@@ -56,28 +56,21 @@ class Solution120 {
         if (triangle == null) {
             return Integer.MAX_VALUE;
         }
-
         int[] cache = new int[triangle.get(triangle.size() - 1).size()];
         for (int i = 0; i < cache.length; i++) {
             cache[i] = triangle.get(triangle.size() - 1).get(i);
         }
-
-        solute(cache, triangle.size() - 2, triangle);
+        for (int i = triangle.size() - 2; i >= 0; i--) {
+            for (int j = 0; j < triangle.get(i).size(); j++) {
+                cache[j] = Math.min(cache[j], cache[j + 1]) + triangle.get(i).get(j);
+            }
+        }
         return cache[0];
-    }
-
-    public void solute(int[] cache, int h, List<List<Integer>> triangle) {
-        if (h < 0) {
-            return;
-        }
-        for (int i = 0; i < triangle.get(h).size(); i++) {
-            cache[i] = Math.min(cache[i], cache[i + 1]) + triangle.get(h).get(i);
-        }
-        solute(cache, h - 1, triangle);
     }
 
     /**
      * 递归 + 动态规划 一般解
+     *
      * @param triangle
      * @return
      */
