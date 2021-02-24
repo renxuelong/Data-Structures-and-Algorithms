@@ -40,7 +40,7 @@ package com.loong.leetcode.editor.cn;
 import java.util.Arrays;
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution188 {
     public int maxProfit(int k, int[] prices) {
         if (k == 0 || prices == null || prices.length == 0) {
             return 0;
@@ -53,6 +53,8 @@ class Solution {
         // k 买的次数，最多占天数一半
         k = Math.min(k, prices.length / 2);
 
+        // f[i][k][0] 第 i 天结束后，已经操作了 k 次时，当前不持有股票情况最大盈利
+        // f[i][k][1] 第 i 天结束后，已经操作了 k 次时，当前持股票情况有最大盈利
         int[][][] result = new int[prices.length][k+1][2];
         for (int i = 0; i <= k; i++) {
             result[0][i][0] = 0;
